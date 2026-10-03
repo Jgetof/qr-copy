@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>텍스트 복사</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 20px 40px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 25px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>텍스트 복사</h2>
+
+  <p>아래 버튼을 누르면 텍스트가 복사됩니다.</p>
+
+  <button onclick="copyText()">복사하기</button>
+
+  <p id="message"></p>
+
+  <script>
+    async function copyText() {
+
+      const text = "여기에 복사하고 싶은 텍스트";
+
+      try {
+        await navigator.clipboard.writeText(text);
+        document.getElementById("message").innerText =
+          "복사되었습니다.";
+      } catch (err) {
+        document.getElementById("message").innerText =
+          "복사하지 못했습니다.";
+      }
+    }
+  </script>
+
+</body>
+</html>
